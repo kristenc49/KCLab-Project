@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  KCLab
+//  KCLab App
 //
 //  Created by Student on 4/9/25.
 //
@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+    
+        ZStack {
+            Image("homeScreen")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
         }
-        .padding()
+        
     }
 }
 
