@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  KCLab
+//  KCLab App
 //
 //  Created by Student on 4/9/25.
 //
