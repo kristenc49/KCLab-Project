@@ -13,7 +13,6 @@ struct ContentView: View {
         ZStack {
             Image("homeScreen")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
         }
         
     }
