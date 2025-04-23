@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showCutscene = false
+
     var body: some View {
-    
-        ZStack {
-            Image("homeScreen")
-                .resizable()
+        if showCutscene {
+          CutsceneView()
+        } else {
+            HomeScreenView(showCutscene: $showCutscene)
         }
-        
     }
 }
+
 
 #Preview {
     ContentView()
