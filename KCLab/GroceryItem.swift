@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct GroceryItem: Identifiable, Codable {
+    var id: Int
+    var name: String
+    var imageName: String
+    var value: Int
+}

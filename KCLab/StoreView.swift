@@ -20,6 +20,7 @@ struct StoreView: View {
                 ShelfView()
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
             }
+            
             .position(x:200, y: 300)
             
             Image("basket")
