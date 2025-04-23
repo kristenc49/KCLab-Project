@@ -9,10 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showCutscene = false
+    @State private var cutsceneFinished = false
 
     var body: some View {
-        if showCutscene {
-          CutsceneView()
+        if cutsceneFinished {
+            StoreView()
+        } else if showCutscene {
+            CutsceneView(cutsceneFinished: $cutsceneFinished)
         } else {
             HomeScreenView(showCutscene: $showCutscene)
         }

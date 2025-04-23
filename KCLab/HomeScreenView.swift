@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+
+
 struct HomeScreenView: View {
     @Binding var showCutscene: Bool
     
@@ -32,11 +34,14 @@ struct HomeScreenView: View {
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                         .shadow(radius: 5)
+                        //.offset(x: 0, y: 100)
                 }
+                .padding(EdgeInsets(top: 200, leading: 0, bottom: 0, trailing: 0))
                 
                 Spacer()
             }
         }
     }
 }
+
 
