@@ -14,17 +14,27 @@ struct ShelfView: View {
         GroceryItem(id: 3, name: "grape", imageName: "grape", value: 10),
         GroceryItem(id: 4, name: "egg", imageName: "egg", value: 10),
         GroceryItem(id: 5, name: "lettuce", imageName: "lettuce", value: 10),
+        GroceryItem(id: 6, name: "tomato", imageName: "tomato", value: 10),
+        GroceryItem(id: 1, name: "banana", imageName: "banana", value: 10),
+        GroceryItem(id: 2, name: "carrot", imageName: "carrot", value: 10),
+        GroceryItem(id: 3, name: "grape", imageName: "grape", value: 10),
+        GroceryItem(id: 4, name: "egg", imageName: "egg", value: 10),
+        GroceryItem(id: 5, name: "lettuce", imageName: "lettuce", value: 10),
         GroceryItem(id: 6, name: "tomato", imageName: "tomato", value: 10)
-        ]
+    ]
     
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 20) {
-                ForEach(groceryItems) { item in
-                    GroceryItemView(groceryItem: item)
+                ForEach(0..<6, id: \.self) { rowIndex in
+                    LazyVStack(spacing: 20) {
+                        ForEach(groceryItems.indices.filter { $0 % 6 == rowIndex }, id: \.self) { index in
+                            GroceryItemView(groceryItem: groceryItems[index])
+                        }
+                    }
                 }
             }
-            .frame(height: 150)
+            .frame(height: 600)
         }
         .background(.shelf)
         .scrollIndicators(.hidden)

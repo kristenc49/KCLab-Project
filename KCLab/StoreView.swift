@@ -14,11 +14,7 @@ struct StoreView: View {
                 .ignoresSafeArea()
             VStack {
                 ShelfView()
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                ShelfView()
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                ShelfView()
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 10, trailing: 0))
             }
             
             .position(x:200, y: 300)
