@@ -59,10 +59,13 @@ struct CutsceneView: View {
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { timer in
             if currentIndex < backgroundImages.count - 1 {
                 currentIndex += 1
-                
+
                 var timeDur = 3.0
-                if currentIndex == 2 {
-                    timeDur = 3.0
+                if currentIndex == -1 { // i want the phone and phone buzzing screens to be shorter but idk how
+                    timeDur = 0.5
+                }
+                if currentIndex == 0 {
+                    timeDur = 1.0
                 }
                 if currentIndex == 4 {
                     timeDur = 10.0
@@ -70,11 +73,11 @@ struct CutsceneView: View {
                         showMessage = true
                         showDirections = true
                     }
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         showDirections = false
                         countdown = 5
-                        
+
                         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { countdownTimer in
                             if countdown > 0 {
                                 countdown -= 1
@@ -85,12 +88,14 @@ struct CutsceneView: View {
                         }
                     }
                 }
-                
+
                 startCutscene(timeInterval: timeDur)
             } else {
                 // timer.invalidate()
-                cutsceneFinished = true 
+                cutsceneFinished = true // Properly trigger transition to StoreView
             }
         }
     }
+
+
 }

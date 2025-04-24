@@ -8,24 +8,52 @@
 import SwiftUI
 
 struct StoreView: View {
+    @State private var timeRemaining = 15
+    @State private var timerRunning = false
+
     var body: some View {
         ZStack {
             Color("shelfBg")
                 .ignoresSafeArea()
+
             VStack {
+                Text("Time Left: \(timeRemaining) sec")
+                    .font(.title2)
+                    .bold()
+                    .padding()
+                    .background(Color.blue.opacity(0.7))
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
+                    .position(x: 200, y: 120)
+
                 ShelfView()
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 10, trailing: 0))
             }
-            
-            .position(x:200, y: 300)
-            
+            .position(x: 200, y: 300)
+
             Image("basket")
                 .resizable()
                 .frame(width: 450, height: 200)
                 .position(x: 200, y: 715)
         }
+        .onAppear {
+            startTimer()
+        }
+    }
+
+    func startTimer() {
+        timerRunning = true
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if timeRemaining > 0 {
+                timeRemaining -= 1
+            } else {
+                timer.invalidate()
+                timerRunning = false
+            }
+        }
     }
 }
+
 
 #Preview {
     StoreView()
