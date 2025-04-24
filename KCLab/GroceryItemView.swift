@@ -11,17 +11,17 @@ struct GroceryItemView: View {
     @Binding var playerScore: Int // Track score updates
     @State private var itemOffset: CGSize = .zero
     @State private var hasMoved: Bool = false
-    private let dropThreshold: CGFloat = 700 // Adjusted for better placement
+    private let dropThreshold: CGFloat = 200 
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 100, height: 100)
+                .frame(width: 130, height: 130)
                 .opacity(0)
             
             Image(groceryItem.imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100, height: 100)
+                .frame(width: 130, height: 130)
         }
         .offset(itemOffset)
         .gesture(

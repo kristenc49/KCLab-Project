@@ -34,17 +34,18 @@ struct ShelfView: View {
      var body: some View {
          ScrollView(.horizontal) {
              LazyHStack(spacing: 20) {
-                 ForEach(0..<numColumns, id: \.self) { colIndex in
+                 ForEach(0..<6, id: \.self) { rowIndex in
                      LazyVStack(spacing: 20) {
-                         ForEach(groceryItems.indices.filter { $0 % numColumns == colIndex }, id: \.self) { index in
+                         ForEach(groceryItems.indices.filter { $0 % 6 == rowIndex }, id: \.self) { index in
                              GroceryItemView(groceryItem: groceryItems[index], playerScore: $playerScore)
+                                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                          }
                      }
                  }
              }
-             .frame(height: CGFloat(numColumns) * 150)
+             .frame(height: 600)
          }
-         .background(Color("shelfBg"))
+         .background(Color("shelfColor"))
          .scrollIndicators(.hidden)
      }
  }

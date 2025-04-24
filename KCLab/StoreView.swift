@@ -24,9 +24,9 @@ struct StoreView: View {
                         .background(Color.blue.opacity(0.7))
                         .cornerRadius(10)
                         .foregroundColor(.white)
-                        .position(x: 200, y: 140)
+                        .position(x: 200, y: 120)
                     ShelfView(playerScore: $playerScore) // Score is still tracked for final screen
-                        .padding(EdgeInsets(top: 100, leading: 0, bottom: 10, trailing: 0))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 }
                 .position(x: 200, y: 300)
                 Image("basket")

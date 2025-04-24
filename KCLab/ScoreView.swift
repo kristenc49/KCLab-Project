@@ -15,18 +15,30 @@ struct ScoreView: View {
             RecipeView()
         } else {
             ZStack {
-                Color("shelfColor").ignoresSafeArea()
+                Image("scoreBg")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
                 VStack(spacing: 30) {
                     Text("Final Score:")
                         .font(.largeTitle)
                         .bold()
-                        .foregroundColor(.green)
+                        .foregroundColor(.black)
+                        .position(x: 100, y: 170)
                     Text("\(finalScore) points")
                         .font(.title)
                         .padding()
                         .background(Color.black.opacity(0.7))
                         .cornerRadius(12)
                         .foregroundColor(.white)
+                        .position(x:95, y: 80)
+                    Text("You got: \n - Bread +20 \n - Onion -15 \n - Cheese +20 \n - Spinach + 20 \n - Egg +10 \n - Orange -5")
+                        .font(.title2)
+                        .bold()
+                        .frame(width: 300, height: 400)
+                        .foregroundColor(.black)
+                        .position(x: 100, y: 70)
+                    
                     Button(action: {
                        
                     }) {
@@ -37,6 +49,7 @@ struct ScoreView: View {
                             .background(Color.orange)
                             .foregroundColor(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .position(x:250, y: 90)
                     }
                     Button(action: {
                         showRecipeScreen = true // Transition to recipe screen
@@ -48,6 +61,7 @@ struct ScoreView: View {
                             .background(Color.green)
                             .foregroundColor(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .position(x: 250, y: 0)
                     }
                 }
                 .padding()

@@ -9,7 +9,10 @@ struct RecipeView: View {
     @Environment(\.presentationMode) var presentationMode // Allows navigation back
     var body: some View {
         ZStack {
-            Color("shelfBg").ignoresSafeArea()
+            Image("homeScreen")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 VStack(spacing: 5) {
                     Text("Recipe:")
