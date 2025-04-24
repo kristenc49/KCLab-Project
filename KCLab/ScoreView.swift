@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct ScoreView: View {
+    @State private var showCutscene = false
+    @State private var cutsceneFinished = false
+    @State private var gameOver = false
    // let finalScore: Int
     var body: some View {
         ZStack {
-            Color("scoreBg").ignoresSafeArea()
+            Image("scoreBg")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 20) {
+            VStack(spacing: 50) {
                 Text("Game Over!")
                     .font(.largeTitle)
                     .bold()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
+                    .position(x: 100, y: 200)
                 
                 Text("Your Score: PLACEHOLDER")
                     .font(.title)
@@ -25,6 +32,7 @@ struct ScoreView: View {
                     .background(Color.black.opacity(0.7))
                     .cornerRadius(10)
                     .foregroundColor(.white)
+                    .position(x: 140, y: 100)
                 
                 Button(action: {
                 }) {
@@ -35,8 +43,10 @@ struct ScoreView: View {
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
+                .position(x: 110, y: 20)
                 
                 Button(action: {
+                    ContentView(showCutscene: $showCutscene, cutsceneFinished: $cutsceneFinished, gameOver: $gameOver)
                 }) {
                     Text("Hungry?")
                         .font(.title2)
@@ -45,6 +55,7 @@ struct ScoreView: View {
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
+                .position(x: 85, y: -80)
             }
             .padding()
         }

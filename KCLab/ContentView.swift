@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showCutscene = false
-    @State private var cutsceneFinished = false
+    @Binding var showCutscene: Bool
+    @Binding var cutsceneFinished: Bool
+    @Binding var gameOver: Bool
 
     var body: some View {
-        if cutsceneFinished {
-            StoreView()
+        if gameOver {
+            ScoreView()
+        } else if cutsceneFinished {
+            StoreView(gameOver: $gameOver)
         } else if showCutscene {
             CutsceneView(cutsceneFinished: $cutsceneFinished)
         } else {
@@ -22,6 +25,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

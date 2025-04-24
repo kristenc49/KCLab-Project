@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct StoreView: View {
-    @State private var timeRemaining = 15
+    @State private var timeRemaining = 3
     @State private var timerRunning = false
+    @Binding var gameOver: Bool
 
     var body: some View {
         ZStack {
@@ -17,14 +18,26 @@ struct StoreView: View {
                 .ignoresSafeArea()
 
             VStack {
-                Text("Time Left: \(timeRemaining) sec")
-                    .font(.title2)
-                    .bold()
-                    .padding()
-                    .background(Color.blue.opacity(0.7))
-                    .cornerRadius(10)
-                    .foregroundColor(.white)
-                    .position(x: 200, y: 120)
+                if !gameOver {
+                    Text("Time Left: \(timeRemaining) sec")
+                        .font(.title2)
+                        .bold()
+                        .padding()
+                        .background(Color.blue.opacity(0.7))
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .position(x: 200, y: 120)
+                } else {
+                    Text("Time's up!")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                        .background(Color.blue.opacity(0.7))
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .position(x: 200, y: 400)
+                        .zIndex(2)
+                }
 
                 ShelfView()
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 10, trailing: 0))
@@ -49,12 +62,13 @@ struct StoreView: View {
             } else {
                 timer.invalidate()
                 timerRunning = false
+                gameOver = true
             }
         }
     }
 }
 
 
-#Preview {
-    StoreView()
-}
+//#Preview {
+//    StoreView()
+//}
