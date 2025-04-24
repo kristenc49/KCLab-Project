@@ -39,7 +39,7 @@ struct CutsceneView: View {
                     }
                     .padding()
                     .position(x: UIScreen.main.bounds.width / 2, y: 120)
-                    Spacer() // Pushes ingredients down
+                    Spacer() 
                     VStack {
                         ForEach(requiredIngredients, id: \.self) { ingredient in
                             Text("- \(ingredient)")

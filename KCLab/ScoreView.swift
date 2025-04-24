@@ -15,10 +15,16 @@ struct ScoreView: View {
             RecipeView()
         } else {
             ZStack {
-                Image("scoreBg")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+                ZStack {
+                    Image("scoreBg")
+                        .resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                    Image("pinwheels")
+                        .resizable()
+                        .scaledToFit()
+                        .offset(x: -60)
+                }
                 VStack(spacing: 30) {
                     Text("Final Score:")
                         .font(.largeTitle)
@@ -32,12 +38,14 @@ struct ScoreView: View {
                         .cornerRadius(12)
                         .foregroundColor(.white)
                         .position(x:95, y: 80)
-                    Text("You got: \n - Bread +20 \n - Onion -15 \n - Cheese +20 \n - Spinach + 20 \n - Egg +10 \n - Orange -5")
+                    Text("You got: \n- Bread +20 \n- Cheese +20 \n- Spinach + 20")
                         .font(.title2)
                         .bold()
-                        .frame(width: 300, height: 400)
-                        .foregroundColor(.black)
-                        .position(x: 100, y: 70)
+                        .frame(width: 200, height: 150)
+                        .background(Color.black.opacity(0.7))
+                        .cornerRadius(12)
+                        .foregroundColor(.white)
+                        .position(x: 120, y: 70)
                     
                     Button(action: {
                        
