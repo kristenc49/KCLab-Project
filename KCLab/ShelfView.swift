@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShelfView: View {
+    @Binding var playerScore: Int
     let groceryItems: [GroceryItem] = [
         GroceryItem(id: 1, name: "banana", imageName: "banana", value: 10),
         GroceryItem(id: 2, name: "carrot", imageName: "carrot", value: 10),
@@ -29,25 +30,25 @@ struct ShelfView: View {
         GroceryItem(id: 18, name: "apple", imageName: "apple", value: 10)
     ]
     
-    var body: some View {
-        ScrollView(.horizontal) {
-            LazyHStack(spacing: 20) {
-                ForEach(0..<6, id: \.self) { rowIndex in
-                    LazyVStack(spacing: 20) {
-                        ForEach(groceryItems.indices.filter { $0 % 6 == rowIndex }, id: \.self) { index in
-                            GroceryItemView(groceryItem: groceryItems[index])
-                                .padding(EdgeInsets(top: 30, leading: 10, bottom: 30, trailing: 10))
-                        }
-                    }
-                }
-            }
-            .frame(height: 600)
-        }
-        .background(.shelf)
-        .scrollIndicators(.hidden)
-    }
-}
+    let numColumns = 3 // Increase if more rows are needed later
+     var body: some View {
+         ScrollView(.horizontal) {
+             LazyHStack(spacing: 20) {
+                 ForEach(0..<numColumns, id: \.self) { colIndex in
+                     LazyVStack(spacing: 20) {
+                         ForEach(groceryItems.indices.filter { $0 % numColumns == colIndex }, id: \.self) { index in
+                             GroceryItemView(groceryItem: groceryItems[index], playerScore: $playerScore)
+                         }
+                     }
+                 }
+             }
+             .frame(height: CGFloat(numColumns) * 150)
+         }
+         .background(Color("shelfBg"))
+         .scrollIndicators(.hidden)
+     }
+ }
+ #Preview {
+     ShelfView(playerScore: .constant(0))
+ }
 
-#Preview {
-    ShelfView()
-}

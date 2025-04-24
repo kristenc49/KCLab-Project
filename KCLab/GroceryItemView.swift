@@ -6,15 +6,12 @@
 //
 
 import SwiftUI
-
-import SwiftUI
-
 struct GroceryItemView: View {
     let groceryItem: GroceryItem
+    @Binding var playerScore: Int // Track score updates
     @State private var itemOffset: CGSize = .zero
     @State private var hasMoved: Bool = false
-    private let dropThreshold: CGFloat = 300
-
+    private let dropThreshold: CGFloat = 700 // Adjusted for better placement
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -36,18 +33,20 @@ struct GroceryItemView: View {
                     if value.location.y >= dropThreshold {
                         hasMoved = true
                         withAnimation(.spring()) {
-                            itemOffset = CGSize(width: CGFloat(700), height: CGFloat(700))
+                            itemOffset = CGSize(width: 700, height: 700) // Moves item out of view
                         }
+                        playerScore += groceryItem.value // Increase score when item is dropped correctly
                     } else {
                         withAnimation(.spring()) {
-                            itemOffset = .zero 
+                            itemOffset = .zero // Resets position if not dropped in basket
                         }
                     }
                 }
         )
     }
 }
-
 #Preview {
-    GroceryItemView(groceryItem: GroceryItem(id: 1, name: "banana", imageName: "banana", value: 10))
 }
+
+
+

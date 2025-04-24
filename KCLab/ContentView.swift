@@ -4,19 +4,13 @@
 //
 //  Created by Student on 4/9/25.
 //
-
 import SwiftUI
-
 struct ContentView: View {
-    @Binding var showCutscene: Bool
-    @Binding var cutsceneFinished: Bool
-    @Binding var gameOver: Bool
-
+    @State private var showCutscene = false
+    @State private var cutsceneFinished = false
     var body: some View {
-        if gameOver {
-            ScoreView()
-        } else if cutsceneFinished {
-            StoreView(gameOver: $gameOver)
+        if cutsceneFinished {
+            StoreView()
         } else if showCutscene {
             CutsceneView(cutsceneFinished: $cutsceneFinished)
         } else {
@@ -24,7 +18,7 @@ struct ContentView: View {
         }
     }
 }
+#Preview {
+    ContentView()
+}
 
-//#Preview {
-//    ContentView()
-//}
